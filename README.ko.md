@@ -1,4 +1,4 @@
-<h1 align="center">WSL2 Distribution Migration</h1>
+<h1 align="center">WSL2 배포판 마이그레이션</h1>
 
 <p align="center">
   <a href="https://github.com/jnlk-cn/wsl-migrate/stargazers"><img src="https://img.shields.io/github/stars/jnlk-cn/wsl-migrate?style=flat-square" alt="GitHub stars"></a>
@@ -17,62 +17,62 @@
 
 ---
 
-A concise guide and skill for migrating WSL2 distributions from the system drive to another drive.
+WSL2 배포판을 시스템 드라이브에서 다른 드라이브로 마이그레이션하기 위한 간결한 가이드와 Skill입니다.
 
-## Why Migrate?
+## 왜 마이그레이션해야 할까요?
 
-WSL2 distributions can consume tens of gigabytes over time. Moving them off the system drive (usually `C:`) frees up space and makes backups easier.
+WSL2 배포판은 사용 시간이 늘어남에 따라 수십 GB의 공간을 차지할 수 있습니다. 시스템 드라이브(보통 `C:`)에서 이동하면 공간을 확보하고 백업도 쉬워집니다.
 
-## Quick Start
+## 빠른 시작
 
-### 1. Check Current Distributions
+### 1. 현재 배포판 확인
 
 ```powershell
 wsl -l -v
 ```
 
-### 2. Export & Import
+### 2. 내보내기 및 가져오기
 
 ```powershell
-# Shut down WSL
+# WSL 종료
 wsl --shutdown
 
-# Export
+# 내보내기
 wsl --export Ubuntu-24.04 D:\WSL\ubuntu.tar
 
-# Import to new location
+# 새 위치로 가져오기
 wsl --import ubuntu D:\WSL\Ubuntu D:\WSL\ubuntu.tar
 ```
 
-### 3. Restore Default User
+### 3. 기본 사용자 복원
 
-After import, WSL defaults to `root`. Fix this by creating `/etc/wsl.conf`:
+가져오기 후 WSL은 기본적으로 `root`로 로그인됩니다. `/etc/wsl.conf`를 생성하여 수정하세요:
 
 ```powershell
 wsl -d ubuntu -u root -e bash -c "tee /etc/wsl.conf << 'EOF'
 [user]
-default=<your-linux-username>
+default=<당신의Linux사용자명>
 EOF"
 wsl --terminate ubuntu
 ```
 
-### 4. Clean Up Old Distribution
+### 4. 이전 배포판 정리
 
-Once verified, unregister the old distribution and delete the tar:
+정상 작동을 확인한 후 이전 배포판을 등록 취소하고 tar 파일을 삭제합니다:
 
 ```powershell
 wsl --unregister Ubuntu-24.04
 Remove-Item D:\WSL\ubuntu.tar
 ```
 
-## Full Guide
+## 전체 가이드
 
-See [`SKILL.md`](SKILL.md) for the complete step-by-step workflow, including multi-distribution migration, renaming distributions, and safety tips.
+다중 배포판 마이그레이션, 배포판 이름 변경, 안전 팁 등을 포함한 완전한 단계별 워크플로우는 [`SKILL.md`](SKILL.md)를 참조하세요.
 
-## Star History
+## Star 기록
 
 [![Star History Chart](https://api.star-history.com/svg?repos=jnlk-cn/wsl-migrate&type=Date)](https://star-history.com/#jnlk-cn/wsl-migrate&Date)
 
-## License
+## 라이선스
 
-This project is licensed under the [MIT License](LICENSE).
+이 프로젝트는 [MIT 라이선스](LICENSE) 하에 라이선스됩니다.
