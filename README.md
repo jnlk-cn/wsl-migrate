@@ -40,6 +40,25 @@ The core instruction file is [`SKILL.md`](SKILL.md), written in a standard forma
 
 The workflow relies only on standard PowerShell / WSL CLI commands, so any agent with shell access on Windows can execute it.
 
+## How to Install
+
+### Kimi Code CLI
+
+1. Clone or download this repository.
+2. Copy the `wsl-migrate` folder (the one containing `SKILL.md`) into your skills directory:
+   - **User-level**: `~/.kimi/skills/wsl-migrate/`
+   - **Project-level**: `.agents/skills/wsl-migrate/`
+3. Restart Kimi or run with `--skills-dir` pointing to your skills folder.
+4. Ask Kimi anything about WSL migration — the skill auto-triggers.
+
+### Claude / Cursor / ChatGPT / Copilot
+
+1. Open [`SKILL.md`](SKILL.md).
+2. Copy the entire content into your agent's context (system prompt, custom instruction, or chat message).
+3. Ask the agent to migrate your WSL distributions.
+
+> **Tip**: For repeated use, save `SKILL.md` as a "custom instruction" or "knowledge base" in your agent's settings.
+
 ## Quick Start
 
 ### 1. Check Current Distributions

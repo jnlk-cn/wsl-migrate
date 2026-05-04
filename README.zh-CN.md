@@ -40,6 +40,25 @@ WSL2 发行版会随着使用时间增长占用数十 GB 空间。将它们从�
 
 工作流仅依赖标准 PowerShell / WSL CLI 命令，任何在 Windows 上具备 shell 访问权限的代理均可执行。
 
+## 如何导入
+
+### Kimi Code CLI
+
+1. 克隆或下载本仓库。
+2. 将 `wsl-migrate` 文件夹（包含 `SKILL.md` 的文件夹）复制到 skill 目录：
+   - **用户级**: `~/.kimi/skills/wsl-migrate/`
+   - **项目级**: `.agents/skills/wsl-migrate/`
+3. 重启 Kimi，或使用 `--skills-dir` 参数指向你的 skills 文件夹。
+4. 向 Kimi 询问任何 WSL 迁移相关问题 —— skill 会自动触发。
+
+### Claude / Cursor / ChatGPT / Copilot
+
+1. 打开 [`SKILL.md`](SKILL.md)。
+2. 将全部内容复制到代理的上下文（系统提示、自定义指令或对话消息）。
+3. 让代理执行 WSL 迁移操作。
+
+> **提示**: 如需重复使用，将 `SKILL.md` 保存为代理设置中的"自定义指令"或"知识库"。
+
 ## 快速开始
 
 ### 1. 查看当前发行版
