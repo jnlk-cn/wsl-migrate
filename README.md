@@ -23,6 +23,23 @@ A concise guide and skill for migrating WSL2 distributions from the system drive
 
 WSL2 distributions can consume tens of gigabytes over time. Moving them off the system drive (usually `C:`) frees up space and makes backups easier.
 
+## About This Skill
+
+This repository is an **AI Agent Skill** — a structured, reusable workflow that AI agents can follow to perform WSL2 migrations safely and consistently.
+
+The core instruction file is [`SKILL.md`](SKILL.md), written in a standard format with YAML frontmatter and Markdown body. AI agents load it to understand the migration workflow, safety checks, and edge cases without reinventing the procedure each time.
+
+### Agent Compatibility
+
+| Agent / Platform | How to Use | Compatibility |
+|------------------|------------|---------------|
+| **Kimi Code CLI** | Place in `~/.kimi/skills/` or project `.agents/skills/`. Frontmatter auto-triggers on WSL migration queries. | ✅ Native |
+| **Claude / Cursor** | Copy `SKILL.md` content into system prompt or `@` context. Agent follows the step-by-step workflow. | ✅ Full |
+| **ChatGPT / Copilot** | Paste `SKILL.md` as context before asking for WSL migration help. | ✅ Full |
+| **GitHub Copilot Chat** | Reference the file in chat or include it in the workspace for inline assistance. | ✅ Full |
+
+The workflow relies only on standard PowerShell / WSL CLI commands, so any agent with shell access on Windows can execute it.
+
 ## Quick Start
 
 ### 1. Check Current Distributions

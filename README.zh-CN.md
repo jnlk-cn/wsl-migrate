@@ -23,6 +23,23 @@
 
 WSL2 发行版会随着使用时间增长占用数十 GB 空间。将它们从系统盘（通常是 `C:`）迁移出去可以释放空间，也方便备份。
 
+## 关于本 Skill
+
+本仓库是一个 **AI Agent Skill** —— 一种结构化、可复用的工作流，供 AI 代理安全、一致地执行 WSL2 迁移操作。
+
+核心指令文件是 [`SKILL.md`](SKILL.md)，采用标准格式编写（YAML frontmatter + Markdown 正文）。AI 代理加载它后即可掌握迁移流程、安全检查点和边界情况处理，无需每次重新摸索。
+
+### 代理兼容性
+
+| 代理 / 平台 | 使用方式 | 兼容性 |
+|------------|---------|--------|
+| **Kimi Code CLI** | 放入 `~/.kimi/skills/` 或项目 `.agents/skills/`。Frontmatter 在 WSL 迁移相关查询时自动触发。 | ✅ 原生支持 |
+| **Claude / Cursor** | 将 `SKILL.md` 内容复制到系统提示或 `@` 上下文。代理按步骤执行工作流。 | ✅ 完全兼容 |
+| **ChatGPT / Copilot** | 将 `SKILL.md` 粘贴为上下文，然后请求 WSL 迁移帮助。 | ✅ 完全兼容 |
+| **GitHub Copilot Chat** | 在对话中引用该文件，或将其放入工作区以获得内联协助。 | ✅ 完全兼容 |
+
+工作流仅依赖标准 PowerShell / WSL CLI 命令，任何在 Windows 上具备 shell 访问权限的代理均可执行。
+
 ## 快速开始
 
 ### 1. 查看当前发行版
